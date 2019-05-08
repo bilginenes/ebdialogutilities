@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">EB Dialog Utilities</string>
+
+    <string name="information">Information</string>
+    <string name="later">Later</string>
+
+    <string name="not_supported_annotation">This feature is not supported yet. If you think there is a problem, contact with the application developer.</string>
+    <string name="debug_notation">Developer should check this operation.</string>
+    <string name="vote_header">Do you like Memories Gallery?</string>
+    <string name="vote_message">You can support us by giving stars on Google Play Store. Thanks for your participation :)</string>
+
+</resources>
