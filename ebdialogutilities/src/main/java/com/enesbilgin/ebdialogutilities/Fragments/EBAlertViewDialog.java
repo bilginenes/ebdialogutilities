@@ -16,7 +16,10 @@ import androidx.fragment.app.DialogFragment;
 
 import com.enesbilgin.ebdialogutilities.Interfaces.CompletionListener;
 import com.enesbilgin.ebdialogutilities.R;
-
+/**
+ * Copyright 2019
+ * Enes Bilgin
+ */
 public class EBAlertViewDialog extends DialogFragment {
     private AlertViewType type;
     private String header_text = null;

@@ -14,7 +14,10 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
 import com.enesbilgin.ebdialogutilities.R;
-
+/**
+ * Copyright 2019
+ * Enes Bilgin
+ */
 public class VoteAppDialog extends DialogFragment {
 
     public static VoteAppDialog newInstance(){

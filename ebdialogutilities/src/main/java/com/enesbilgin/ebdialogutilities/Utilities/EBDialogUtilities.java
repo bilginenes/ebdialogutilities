@@ -11,7 +11,10 @@ import com.enesbilgin.ebdialogutilities.Fragments.EBAlertViewDialog;
 import com.enesbilgin.ebdialogutilities.Fragments.VoteAppDialog;
 import com.enesbilgin.ebdialogutilities.Interfaces.CompletionListener;
 import com.enesbilgin.ebdialogutilities.R;
-
+/**
+ * Copyright 2019
+ * Enes Bilgin
+ */
 public class EBDialogUtilities {
 
     public static void showConfirmBox(Context context, String header_text, String message_text, CompletionListener completionListener) {
