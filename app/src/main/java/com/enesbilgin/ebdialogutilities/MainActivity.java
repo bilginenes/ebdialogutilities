@@ -12,12 +12,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.enesbilgin.ebdialogutilities.Interfaces.CompletionListener;
 import com.enesbilgin.ebdialogutilities.Interfaces.VoteChoiceListener;
 import com.enesbilgin.ebdialogutilities.Utilities.EBDialogUtilities;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button button1, button2, button3;
+    private Button button1, button2, button3, button4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         button1 = findViewById(R.id.button1);
         button2 = findViewById(R.id.button2);
         button3 = findViewById(R.id.button3);
+        button4= findViewById(R.id.button4);
 
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,6 +61,23 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onLater() {
                         Toast.makeText(MainActivity.this,"onLater", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
+
+        button4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EBDialogUtilities.showConfirmBox(MainActivity.this, "Confirm Process", "Do you want to proceed the operation?", new CompletionListener() {
+                    @Override
+                    public void onSuccess() {
+                        Toast.makeText(MainActivity.this,"onSuccess", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onCancel() {
+                        Toast.makeText(MainActivity.this,"onCancel", Toast.LENGTH_SHORT).show();
                     }
                 });
             }
