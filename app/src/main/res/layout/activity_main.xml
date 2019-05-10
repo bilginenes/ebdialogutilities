@@ -7,6 +7,14 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:text="Info Boxes"
+        android:textAlignment="center"
+        android:textColor="@color/md_blue_800" />
+
     <Button
         android:id="@+id/button1"
         android:layout_width="match_parent"
@@ -17,18 +25,40 @@
         android:id="@+id/button2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Error Box" />
+        android:text="Not Supported Box" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:text="Error Boxes"
+        android:textAlignment="center"
+        android:textColor="@color/md_red_900" />
 
     <Button
         android:id="@+id/button3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Vote Box" />
+        android:text="Error Box" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:text="Custom Boxes"
+        android:textAlignment="center"
+        android:textColor="@color/md_black_1000" />
 
     <Button
         android:id="@+id/button4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Confirm Box" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Vote Box" />
 
 </LinearLayout>
