@@ -1,4 +1,4 @@
-EB Dialog Utilities
+## EB Dialog Utilities
 
 [![](https://jitpack.io/v/bilginenes/ebdialogutilities.svg)](https://jitpack.io/#bilginenes/ebdialogutilities)
 
@@ -50,6 +50,29 @@ EBDialogUtilities.showConfirmBox(MainActivity.this, "Confirm Process", "Do you w
 	});
 ```
 <img src="https://raw.githubusercontent.com/bilginenes/ebdialogutilities/master/readme/confirm.png" width="320px">
+
+Google Play Vote Dialog
+ ```dart
+EBDialogUtilities.showVoteBox(MainActivity.this, getString(R.string.app_name), new VoteChoiceListener() {
+    @Override
+    public void onRedirect() {
+    	//Redirect your user to google play here.
+	redirectToGooglePlay();
+	Toast.makeText(MainActivity.this,"onRedirect", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onCancel() {
+	Toast.makeText(MainActivity.this,"onCancel", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onLater() {
+	Toast.makeText(MainActivity.this,"onLater", Toast.LENGTH_SHORT).show();
+    }
+});
+```
+<img src="https://raw.githubusercontent.com/bilginenes/ebdialogutilities/master/readme/vote.png" width="320px">
 
 ## Bugs/Requests
 
