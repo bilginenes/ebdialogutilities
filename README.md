@@ -4,6 +4,10 @@
 
 EB Dialog is a Pop-up Dailog library that offers solutions for general Info, Error, Confirm cases.
 
+### Active use in Memories: Dark Gallery
+
+https://play.google.com/store/apps/details?id=com.enesbilgin.memories
+
 ## Import Gradle
 
 Add it in your root build.gradle at the end of repositories:
