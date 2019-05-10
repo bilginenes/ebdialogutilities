@@ -1,12 +1,50 @@
 <resources>
     <string name="app_name">EB Dialog Utilities</string>
 
-    <string name="information">Information</string>
-    <string name="later">Later</string>
-
     <string name="not_supported_annotation">This feature is not supported yet. If you think there is a problem, contact with the application developer.</string>
     <string name="debug_notation">Developer should check this operation.</string>
     <string name="vote_header">Do you like Memories Gallery?</string>
     <string name="vote_message">You can support us by giving stars on Google Play Store. Thanks for your participation :)</string>
+
+
+    <!--Fix Values, ID's, Keys, Tokens, API KEYS etc. -->
+    <string name="lorem_ipsum_long" translatable="false">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</string>
+    <string name="lorem_ipsum_short" translatable="false">Lorem ipsum dolor sit amet</string>
+
+    <!--General expression-->
+    <string name="on">On</string>
+    <string name="off">Off</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="ok">Okay</string>
+    <string name="all">All</string>
+    <string name="confirm">Confirm</string>
+    <string name="share">Share</string>
+    <string name="delete">Delete</string>
+    <string name="cancel">Cancel</string>
+    <string name="search">Search</string>
+    <string name="hide">Hide</string>
+    <string name="unhide">Unhide</string>
+    <string name="apply">Apply</string>
+    <string name="clear">Clear</string>
+    <string name="today">Today</string>
+    <string name="yesterday">Yesterday</string>
+    <string name="settings">Settings</string>
+    <string name="change">Change</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="information">Information</string>
+    <string name="tags">Tags</string>
+    <string name="success">Successful</string>
+    <string name="about">About</string>
+    <string name="pictures">Pictures</string>
+    <string name="profile">Profile</string>
+    <string name="albums">Albums</string>
+    <string name="later">Later</string>
+    <string name="details">Details</string>
+    <string name="locations">Locations</string>
+    <string name="notifications">Notifications</string>
+    <string name="got_it">Got it!</string>
+
 
 </resources>

@@ -1,9 +1,51 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <style name="DialogStyle" parent="Base.Theme.AppCompat.Dialog">
+        <item name="android:background">@drawable/dialog_background</item>
+        <item name="android:padding">10dp</item>
+    </style>
 
     <style name="DialogAnims">
         <item name="android:windowEnterAnimation">@anim/zoom_in</item>
         <item name="android:windowExitAnimation">@anim/zoom_out</item>
+    </style>
+
+    <!--TextView Styles-->
+    <style name="BaseText">
+        <item name="android:padding">4dp</item>
+    </style>
+
+    <style name="Header1" parent="BaseText">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/md_white_1000</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Message1" parent="BaseText">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/md_grey_300</item>
+    </style>
+
+    <!--Button Styles-->
+    <style name="BaseButton1">
+        <item name="android:background">@color/transparent</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="ConfirmButton1" parent="BaseButton1">
+        <item name="android:textColor">@color/md_green_600</item>
+        <item name="android:text">@string/yes</item>
+    </style>
+
+    <style name="ConfirmButton2" parent="BaseButton1">
+        <item name="android:textColor">@color/md_light_blue_800</item>
+        <item name="android:text">@string/ok</item>
+    </style>
+
+    <style name="RefuseButton1" parent="BaseButton1">
+        <item name="android:textColor">@color/md_red_900</item>
+        <item name="android:text">@string/no</item>
     </style>
 
 </resources>
