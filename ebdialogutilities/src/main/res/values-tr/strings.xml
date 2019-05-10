@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c)
+  ~ 2019.
+  ~ Enes Bilgin
+  -->
+
+<resources>
+    <string name="app_name">EB Dialog Utilities</string>
+
+    <string name="not_supported_annotation">Bu özellik şimdilik desteklenmiyor. Eğer bir hata olduğunu düşünüyorsanız, lütfen uygulama geliştiricisiyle iletişim kurun.</string>
+    <string name="debug_notation">Geliştirici bu durumu kontrol etmelidir.</string>
+    <string name="vote_header">Memories Galeri\'yi beğendiniz mi?</string>
+    <string name="vote_message">Google Play Store\'da yıldız vererek bizi destekleyebilirsiniz. Desteğiniz için teşekkürler :)</string>
+
+    <!--General expression-->
+    <string name="on">Aç</string>
+    <string name="off">Kapat</string>
+    <string name="yes">Evet</string>
+    <string name="no">Hayır</string>
+    <string name="ok">Tamam</string>
+    <string name="all">Hepsi</string>
+    <string name="confirm">Onayla</string>
+    <string name="share">Paylaş</string>
+    <string name="delete">Sil</string>
+    <string name="cancel">İptal</string>
+    <string name="search">Ara</string>
+    <string name="hide">Gizle</string>
+    <string name="unhide">Göster</string>
+    <string name="apply">Uygula</string>
+    <string name="clear">Temizle</string>
+    <string name="today">Bugün</string>
+    <string name="yesterday">Dün</string>
+    <string name="settings">Ayarlar</string>
+    <string name="change">Değiştir</string>
+    <string name="login">Oturum Aç</string>
+    <string name="register">Kayıt Ol</string>
+    <string name="information">Bilgilendirme</string>
+    <string name="tags">Etiketler</string>
+    <string name="success">Başarılı</string>
+    <string name="about">Hakkında</string>
+    <string name="pictures">Fotoğraflar</string>
+    <string name="profile">Profil</string>
+    <string name="albums">Albümler</string>
+    <string name="later">Sonra</string>
+    <string name="details">Detaylar</string>
+    <string name="locations">Yerler</string>
+    <string name="notifications">Bildirimler</string>
+    <string name="got_it">Anladım!</string>
+</resources>
