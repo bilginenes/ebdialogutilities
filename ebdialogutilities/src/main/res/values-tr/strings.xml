@@ -10,7 +10,8 @@
 
     <string name="not_supported_annotation">Bu özellik şimdilik desteklenmiyor. Eğer bir hata olduğunu düşünüyorsanız, lütfen uygulama geliştiricisiyle iletişim kurun.</string>
     <string name="debug_notation">Geliştirici bu durumu kontrol etmelidir.</string>
-    <string name="vote_header">Memories Galeri\'yi beğendiniz mi?</string>
+    <string name="vote_header">Uygulamamızı beğendiniz mi?</string>
+    <string name="vote_header_custom">%s uyg. beğendiğiniz mi?</string>
     <string name="vote_message">Google Play Store\'da yıldız vererek bizi destekleyebilirsiniz. Desteğiniz için teşekkürler :)</string>
 
     <!--General expression-->
@@ -47,4 +48,5 @@
     <string name="locations">Yerler</string>
     <string name="notifications">Bildirimler</string>
     <string name="got_it">Anladım!</string>
+    <string name="error">Hata</string>
 </resources>

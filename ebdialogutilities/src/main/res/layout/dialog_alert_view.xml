@@ -31,7 +31,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/alert_view_confirm2"
+            android:id="@+id/alert_view_okay"
             style="@style/ConfirmButton2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

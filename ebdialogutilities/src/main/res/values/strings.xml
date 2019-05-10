@@ -10,7 +10,8 @@
 
     <string name="not_supported_annotation">This feature is not supported yet. If you think there is a problem, contact with the application developer.</string>
     <string name="debug_notation">Developer should check this operation.</string>
-    <string name="vote_header">Do you like Memories Gallery?</string>
+    <string name="vote_header">Do you like our application?</string>
+    <string name="vote_header_custom">Do you like %s?</string>
     <string name="vote_message">You can support us by giving stars on Google Play Store. Thanks for your participation :)</string>
 
     <!--Fix Values, ID's, Keys, Tokens, API KEYS etc. -->
@@ -51,6 +52,6 @@
     <string name="locations">Locations</string>
     <string name="notifications">Notifications</string>
     <string name="got_it">Got it!</string>
-
+    <string name="error">Error</string>
 
 </resources>

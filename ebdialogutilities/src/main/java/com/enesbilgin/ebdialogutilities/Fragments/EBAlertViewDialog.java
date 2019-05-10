@@ -14,7 +14,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
+import com.enesbilgin.ebdialogutilities.Constants.AlertViewType;
 import com.enesbilgin.ebdialogutilities.Interfaces.CompletionListener;
+import com.enesbilgin.ebdialogutilities.Interfaces.SingleEventListener;
 import com.enesbilgin.ebdialogutilities.R;
 /**
  * Copyright 2019
@@ -25,33 +27,35 @@ public class EBAlertViewDialog extends DialogFragment {
     private String header_text = null;
     private String message_text = null;
     private CompletionListener completionListener = null;
-
-    public enum AlertViewType {
-        CONFIRM_BOX, //Header, Message, Confirm Listener, Refuse Listener
-        INFO_BOX, //Header, Message
-        ERROR_BOX, //Header, Message
-        LOADING_BOX, //Nothing
-        LOADING_INFO_BOX, //Header, Message
-    }
+    private SingleEventListener singleEventListener = null;
 
     //CONFIRM_BOX
-    public static EBAlertViewDialog newInstance(AlertViewType type, String header_text, String message_text, CompletionListener completionListener){
+    public static EBAlertViewDialog newInstance(AlertViewType type, String header_text, String message_text, CompletionListener completionListener, SingleEventListener singleEventListener){
         EBAlertViewDialog dialog = new EBAlertViewDialog();
         dialog.type = type;
         dialog.header_text = header_text;
         dialog.message_text = message_text;
         dialog.completionListener = completionListener;
+        dialog.singleEventListener = singleEventListener;
         return dialog;
+    }
+
+    public static EBAlertViewDialog newInstance(AlertViewType type, String header_text, String message_text, CompletionListener completionListener){
+        return newInstance(type, header_text, message_text, completionListener, null);
     }
 
     //INFO_BOX ERROR_BOX LOADING_INFO_BOX
     public static EBAlertViewDialog newInstance(AlertViewType type, String header_text, String message_text){
-        return newInstance(type,header_text,message_text,null);
+        return newInstance(type,header_text,message_text,null, null);
+    }
+
+    public static EBAlertViewDialog newInstance(AlertViewType type, String header_text, String message_text, SingleEventListener singleEventListener){
+        return newInstance(type,header_text,message_text,null, singleEventListener);
     }
 
     //LOADING_BOX
     public static EBAlertViewDialog newInstance(AlertViewType type){
-        return newInstance(type,null,null,null);
+        return newInstance(type,null,null,null,null);
     }
 
     @Override
@@ -60,34 +64,31 @@ public class EBAlertViewDialog extends DialogFragment {
         setRetainInstance(true);
     }
 
+    private TextView alert_view_header, alert_view_message;
+    private LinearLayout alert_view_buttons;
+    private Button alert_view_refuse, alert_view_confirm, alert_view_okay;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        super.onCreateView(inflater,container,savedInstanceState);
-
-        /*if(savedInstanceState!=null) {
-            type = (AlertViewType) savedInstanceState.get("type");
-            header_text = savedInstanceState.getString("header_text");
-            message_text = savedInstanceState.getString("message_text");
-            completionListener = (CompletionListener) savedInstanceState.get("completionListener");
-        }*/
+        super.onCreateView(inflater, container, savedInstanceState);
 
         getDialog().getWindow().getAttributes().windowAnimations = R.style.DialogAnims;
         getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         setCancelable(false);
 
-        if(type==AlertViewType.LOADING_BOX)
+        if (type == AlertViewType.LOADING_BOX)
             return inflater.inflate(R.layout.dialog_loading_view, container, false);
 
         View view = inflater.inflate(R.layout.dialog_alert_view, container, false);
 
-        TextView alert_view_header = view.findViewById(R.id.alert_view_header);
-        TextView alert_view_message = view.findViewById(R.id.alert_view_message);
+        alert_view_header = view.findViewById(R.id.alert_view_header);
+        alert_view_message = view.findViewById(R.id.alert_view_message);
 
-        LinearLayout alert_view_buttons = view.findViewById(R.id.alert_view_buttons);
-        Button alert_view_refuse = view.findViewById(R.id.alert_view_refuse);
-        Button alert_view_confirm = view.findViewById(R.id.alert_view_confirm);
-        Button alert_view_confirm2 = view.findViewById(R.id.alert_view_confirm2);
+        alert_view_buttons = view.findViewById(R.id.alert_view_buttons);
+        alert_view_refuse = view.findViewById(R.id.alert_view_refuse);
+        alert_view_confirm = view.findViewById(R.id.alert_view_confirm);
+        alert_view_okay = view.findViewById(R.id.alert_view_okay);
 
         switch (type) {
             case CONFIRM_BOX:
@@ -107,17 +108,36 @@ public class EBAlertViewDialog extends DialogFragment {
                         EBAlertViewDialog.this.dismiss();
                     }
                 });
-                alert_view_confirm2.setVisibility(View.GONE);
+                alert_view_okay.setVisibility(View.GONE);
                 return view;
             case INFO_BOX:
-            case ERROR_BOX:
                 alert_view_header.setText(header_text);
+                //Use default header color.
                 alert_view_message.setText(message_text);
 
-                alert_view_confirm2.setOnClickListener(new View.OnClickListener() {
+                alert_view_okay.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         EBAlertViewDialog.this.dismiss();
+                        if (singleEventListener != null)
+                            singleEventListener.onComplete();
+                    }
+                });
+
+                alert_view_refuse.setVisibility(View.GONE);
+                alert_view_confirm.setVisibility(View.GONE);
+                return view;
+            case ERROR_BOX:
+                alert_view_header.setText(header_text);
+                alert_view_header.setTextColor(getResources().getColor(R.color.md_red_900));
+                alert_view_message.setText(message_text);
+
+                alert_view_okay.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        EBAlertViewDialog.this.dismiss();
+                        if (singleEventListener != null)
+                            singleEventListener.onComplete();
                     }
                 });
 
@@ -133,13 +153,4 @@ public class EBAlertViewDialog extends DialogFragment {
                 return view;
         }
     }
-
-    /*@Override
-    public void onSaveInstanceState(@NonNull Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putSerializable("type", type);
-        outState.putString("header_text", header_text);
-        outState.putString("message_text", message_text);
-        outState.putSerializable("completionListener", completionListener);
-    }*/
 }
