@@ -9,46 +9,47 @@ EB Dialog is a Pop-up Dailog library that offers solutions for general Info, Err
 Add it in your root build.gradle at the end of repositories:
 ```dart
 allprojects {
-		repositories {
-			...
-			maven { url 'https://jitpack.io' }
-		}
-	}
+    repositories {
+        ...
+        maven { url 'https://jitpack.io' }
+    }
+}
 ```
  Add the dependency:
 ```dart
 dependencies {
-	        implementation 'com.github.bilginenes:ebdialogutilities:Tag'
-	}
+    implementation 'com.github.bilginenes:ebdialogutilities:0.1.1'
+}
 ```
 ### How To Use
 Information Dialog
 ```dart
 EBDialogUtilities.showInfoBox(MainActivity.this,"This is an information message.");
 ```
- <img src="https://raw.githubusercontent.com/bilginenes/ebdialogutilities/master/readme/info.png" width="240px">
+ <img src="https://raw.githubusercontent.com/bilginenes/ebdialogutilities/master/readme/info.png" width="320px">
 
 Error Dialog
  ```dart
 EBDialogUtilities.showErrorBox(MainActivity.this,"This is a error message.");
 ```
-<img src="https://raw.githubusercontent.com/bilginenes/ebdialogutilities/master/readme/err.png" width="240px">
+<img src="https://raw.githubusercontent.com/bilginenes/ebdialogutilities/master/readme/err.png" width="320px">
 
 Confirmation Dialog
  ```dart
-EBDialogUtilities.showConfirmBox(MainActivity.this, "Confirm Process", "Do you want to proceed the operation?", new CompletionListener() {
-                    @Override
-                    public void onSuccess() {
-                        Toast.makeText(MainActivity.this,"onSuccess", Toast.LENGTH_SHORT).show();
-                    }
+EBDialogUtilities.showConfirmBox(MainActivity.this, "Confirm Process", "Do you want to proceed the operation?", 
+    new CompletionListener() {
+	    @Override
+	    public void onSuccess() {
+		Toast.makeText(MainActivity.this,"onSuccess", Toast.LENGTH_SHORT).show();
+	    }
 
-                    @Override
-                    public void onCancel() {
-                        Toast.makeText(MainActivity.this,"onCancel", Toast.LENGTH_SHORT).show();
-                    }
-                });
+	    @Override
+	    public void onCancel() {
+		Toast.makeText(MainActivity.this,"onCancel", Toast.LENGTH_SHORT).show();
+	    }
+	});
 ```
-<img src="https://raw.githubusercontent.com/bilginenes/ebdialogutilities/master/readme/confirm.png" width="240px">
+<img src="https://raw.githubusercontent.com/bilginenes/ebdialogutilities/master/readme/confirm.png" width="320px">
 
 ## Bugs/Requests
 
