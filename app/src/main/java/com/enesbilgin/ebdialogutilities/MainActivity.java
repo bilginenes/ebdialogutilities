@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.enesbilgin.ebdialogutilities.Constants.DialogTheme;
 import com.enesbilgin.ebdialogutilities.Interfaces.CompletionListener;
 import com.enesbilgin.ebdialogutilities.Interfaces.VoteChoiceListener;
 import com.enesbilgin.ebdialogutilities.Utilities.EBDialogUtilities;
@@ -24,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        EBDialogUtilities.initialize(MainActivity.this,DialogTheme.DARK_1);
 
         button1 = findViewById(R.id.button1);
         button2 = findViewById(R.id.button2);

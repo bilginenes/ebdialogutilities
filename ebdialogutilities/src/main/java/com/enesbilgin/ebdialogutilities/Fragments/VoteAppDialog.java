@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -56,7 +55,7 @@ public class VoteAppDialog extends DialogFragment {
         getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         setCancelable(false);
 
-        View view = inflater.inflate(R.layout.dialog_alert_view, container, false);
+        View view = inflater.inflate(R.layout.dialog_dark_1_alert_view, container, false);
 
         alert_view_header = view.findViewById(R.id.alert_view_header);
         alert_view_message = view.findViewById(R.id.alert_view_message);

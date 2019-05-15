@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 
 import com.enesbilgin.ebdialogutilities.Constants.AlertViewType;
+import com.enesbilgin.ebdialogutilities.Constants.DialogTheme;
 import com.enesbilgin.ebdialogutilities.Fragments.EBAlertViewDialog;
 import com.enesbilgin.ebdialogutilities.Fragments.VoteAppDialog;
 import com.enesbilgin.ebdialogutilities.Interfaces.CompletionListener;
@@ -20,6 +21,9 @@ import com.enesbilgin.ebdialogutilities.R;
  */
 public class EBDialogUtilities {
 
+    public static void initialize(Context context, DialogTheme dialogTheme) {
+        StyleUtilities.setDialogTheme(context, dialogTheme);
+    }
     /**Info**/
     public static void showInfoBox(Context context, String header_text, String message_text, SingleEventListener singleEventListener) {
         EBAlertViewDialog dialog = EBAlertViewDialog.newInstance(AlertViewType.INFO_BOX, header_text, message_text, singleEventListener);

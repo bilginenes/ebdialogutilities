@@ -1,8 +1,15 @@
 <resources>
 
-    <style name="DialogStyle" parent="Base.Theme.AppCompat.Dialog">
-        <item name="android:background">@drawable/dialog_background</item>
+    <style name="BaseDialogStyle" parent="Base.Theme.AppCompat.Dialog">
         <item name="android:padding">10dp</item>
+    </style>
+
+    <style name="DARK_1" parent="BaseDialogStyle">
+        <item name="android:background">@drawable/dialog_background_dark</item>
+    </style>
+
+    <style name="LIGHT_1" parent="BaseDialogStyle">
+        <item name="android:background">@drawable/dialog_background_light</item>
     </style>
 
     <style name="DialogAnims">
@@ -15,15 +22,31 @@
         <item name="android:padding">4dp</item>
     </style>
 
-    <style name="Header1" parent="BaseText">
+    <!--Header TextView Styles-->
+    <style name="BaseHeader" parent="BaseText">
         <item name="android:textSize">18sp</item>
-        <item name="android:textColor">@color/md_white_1000</item>
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="Message1" parent="BaseText">
+    <style name="Header1" parent="BaseHeader">
+        <item name="android:textColor">@color/md_white_1000</item>
+    </style>
+
+    <style name="Header2" parent="BaseHeader">
+        <item name="android:textColor">@color/md_black_1000</item>
+    </style>
+
+    <!--Message TextView Styles-->
+    <style name="BaseMessage" parent="BaseText">
         <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="Message1" parent="BaseMessage">
         <item name="android:textColor">@color/md_grey_300</item>
+    </style>
+
+    <style name="Message2" parent="BaseMessage">
+        <item name="android:textColor">@color/md_grey_800</item>
     </style>
 
     <!--Button Styles-->

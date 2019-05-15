@@ -15,9 +15,12 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
 import com.enesbilgin.ebdialogutilities.Constants.AlertViewType;
+import com.enesbilgin.ebdialogutilities.Constants.DialogTheme;
 import com.enesbilgin.ebdialogutilities.Interfaces.CompletionListener;
 import com.enesbilgin.ebdialogutilities.Interfaces.SingleEventListener;
 import com.enesbilgin.ebdialogutilities.R;
+import com.enesbilgin.ebdialogutilities.Utilities.StyleUtilities;
+
 /**
  * Copyright 2019
  * Enes Bilgin
@@ -80,7 +83,8 @@ public class EBAlertViewDialog extends DialogFragment {
         if (type == AlertViewType.LOADING_BOX)
             return inflater.inflate(R.layout.dialog_loading_view, container, false);
 
-        View view = inflater.inflate(R.layout.dialog_alert_view, container, false);
+        DialogTheme dialogTheme = StyleUtilities.getDialogTheme(getContext());
+        View view = inflater.inflate(StyleUtilities.getDialogViewID(dialogTheme), container, false);
 
         alert_view_header = view.findViewById(R.id.alert_view_header);
         alert_view_message = view.findViewById(R.id.alert_view_message);
