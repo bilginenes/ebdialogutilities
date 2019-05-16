@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
         button5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EBDialogUtilities.showVoteBox(MainActivity.this, getString(R.string.app_name), new VoteChoiceListener() {
+                EBDialogUtilities.showVoteBox(MainActivity.this, getString(R.string.app_name_eb), new VoteChoiceListener() {
                     @Override
                     public void onRedirect() {
                         Toast.makeText(MainActivity.this,"onRedirect", Toast.LENGTH_SHORT).show();

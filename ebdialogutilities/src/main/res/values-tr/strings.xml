@@ -6,7 +6,6 @@
   -->
 
 <resources>
-    <string name="app_name">EB Dialog Utilities</string>
 
     <string name="not_supported_annotation">Bu özellik şimdilik desteklenmiyor. Eğer bir hata olduğunu düşünüyorsanız, lütfen uygulama geliştiricisiyle iletişim kurun.</string>
     <string name="debug_notation">Geliştirici bu durumu kontrol etmelidir.</string>

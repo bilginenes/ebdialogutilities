@@ -6,7 +6,6 @@
   -->
 
 <resources>
-    <string name="app_name" translatable="false">EB Dialog Utilities</string>
 
     <string name="not_supported_annotation">This feature is not supported yet. If you think there is a problem, contact with the application developer.</string>
     <string name="debug_notation">Developer should check this operation.</string>
