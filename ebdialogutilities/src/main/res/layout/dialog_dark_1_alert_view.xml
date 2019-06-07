@@ -15,14 +15,14 @@
             style="@style/Header1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/lorem_ipsum_short" />
+            android:text="@string/eb_lorem_ipsum_short" />
 
         <TextView
             android:id="@+id/alert_view_message"
             style="@style/Message1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/lorem_ipsum_long" />
+            android:text="@string/eb_lorem_ipsum_long" />
 
         <LinearLayout
             android:id="@+id/alert_view_buttons"

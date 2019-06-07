@@ -58,17 +58,17 @@
 
     <style name="ConfirmButton1" parent="BaseButton1">
         <item name="android:textColor">@color/md_green_600</item>
-        <item name="android:text">@string/yes</item>
+        <item name="android:text">@string/eb_yes</item>
     </style>
 
     <style name="ConfirmButton2" parent="BaseButton1">
         <item name="android:textColor">@color/md_light_blue_800</item>
-        <item name="android:text">@string/ok</item>
+        <item name="android:text">@string/eb_ok</item>
     </style>
 
     <style name="RefuseButton1" parent="BaseButton1">
         <item name="android:textColor">@color/md_red_900</item>
-        <item name="android:text">@string/no</item>
+        <item name="android:text">@string/eb_no</item>
     </style>
 
 </resources>

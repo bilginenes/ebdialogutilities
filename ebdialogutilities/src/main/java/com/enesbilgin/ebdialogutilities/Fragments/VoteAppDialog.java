@@ -65,13 +65,13 @@ public class VoteAppDialog extends DialogFragment {
         alert_view_okay = view.findViewById(R.id.alert_view_okay);
 
         if(app_name==null) {
-            alert_view_header.setText(R.string.vote_header);
+            alert_view_header.setText(R.string.eb_vote_header);
         } else {
-            String custom_header = String.format(getContext().getString(R.string.vote_header_custom), app_name);
+            String custom_header = String.format(getContext().getString(R.string.eb_vote_header_custom), app_name);
             alert_view_header.setText(custom_header);
         }
 
-        alert_view_message.setText(R.string.vote_message);
+        alert_view_message.setText(R.string.eb_vote_message);
 
         if(voteChoiceListener==null)
             return null;
@@ -92,7 +92,7 @@ public class VoteAppDialog extends DialogFragment {
             }
         });
 
-        alert_view_okay.setText(R.string.later);
+        alert_view_okay.setText(R.string.eb_later);
         alert_view_okay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

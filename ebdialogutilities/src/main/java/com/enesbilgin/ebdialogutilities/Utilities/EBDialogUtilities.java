@@ -36,18 +36,18 @@ public class EBDialogUtilities {
     }
 
     public static void showInfoBox(Context context, String message_text) {
-        String header_text = context.getString(R.string.information);
+        String header_text = context.getString(R.string.eb_information);
         showInfoBox(context, header_text, message_text);
     }
 
     public static void showInfoBox(Context context, String message_text, SingleEventListener singleEventListener) {
-        String header_text = context.getString(R.string.information);
+        String header_text = context.getString(R.string.eb_information);
         EBAlertViewDialog dialog = EBAlertViewDialog.newInstance(AlertViewType.INFO_BOX, header_text, message_text, singleEventListener);
         show(dialog, context);
     }
 
     public static void showNotSupportedInfoBox(Context context) {
-        EBAlertViewDialog dialog = EBAlertViewDialog.newInstance(AlertViewType.INFO_BOX,context.getString(R.string.information),context.getString(R.string.not_supported_annotation));
+        EBAlertViewDialog dialog = EBAlertViewDialog.newInstance(AlertViewType.INFO_BOX,context.getString(R.string.eb_information),context.getString(R.string.eb_not_supported_annotation));
         show(dialog, context);
     }
 
@@ -63,12 +63,12 @@ public class EBDialogUtilities {
     }
 
     public static void showErrorBox(Context context, String message_text) {
-        String header_text = context.getString(R.string.error);
+        String header_text = context.getString(R.string.eb_error);
         showErrorBox(context, header_text, message_text);
     }
 
     public static void showErrorBox(Context context, String message_text, SingleEventListener singleEventListener) {
-        String header_text = context.getString(R.string.error);
+        String header_text = context.getString(R.string.eb_error);
         showErrorBox(context, header_text, message_text, singleEventListener);
     }
 
@@ -102,7 +102,7 @@ public class EBDialogUtilities {
             FragmentManager fm = ((FragmentActivity) context).getSupportFragmentManager();
             dialog.show(fm, "dialog");
         }else {
-            Toast.makeText(context,R.string.debug_notation,Toast.LENGTH_SHORT).show();
+            Toast.makeText(context,R.string.eb_debug_notation,Toast.LENGTH_SHORT).show();
         }
     }
 
