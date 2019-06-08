@@ -12,4 +12,5 @@ public enum AlertViewType {
     ERROR_BOX, //Header, Message
     LOADING_BOX, //Nothing
     LOADING_INFO_BOX, //Header, Message
+    EBCUSTOM_DIALOG
 }

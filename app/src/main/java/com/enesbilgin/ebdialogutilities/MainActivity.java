@@ -12,27 +12,35 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.enesbilgin.ebdialogutilities.Constants.ButtonsSequence;
 import com.enesbilgin.ebdialogutilities.Constants.DialogTheme;
+import com.enesbilgin.ebdialogutilities.Constants.VerticalButtonsGravity;
 import com.enesbilgin.ebdialogutilities.Interfaces.CompletionListener;
+import com.enesbilgin.ebdialogutilities.Interfaces.SingleEventListener;
 import com.enesbilgin.ebdialogutilities.Interfaces.VoteChoiceListener;
+import com.enesbilgin.ebdialogutilities.Models.EBButtonModel;
+import com.enesbilgin.ebdialogutilities.Models.EBCustomDialogModel;
 import com.enesbilgin.ebdialogutilities.Utilities.EBDialogUtilities;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button button1, button2, button3, button4, button5;
+    private Button button1, button2, button3, button4, button5, button6;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        EBDialogUtilities.initialize(MainActivity.this,DialogTheme.DARK_1);
+        EBDialogUtilities.initialize(MainActivity.this,DialogTheme.LIGHT_1);
 
         button1 = findViewById(R.id.button1);
         button2 = findViewById(R.id.button2);
         button3 = findViewById(R.id.button3);
         button4= findViewById(R.id.button4);
         button5= findViewById(R.id.button5);
+        button6= findViewById(R.id.button6);
 
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,6 +99,34 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this,"onLater", Toast.LENGTH_SHORT).show();
                     }
                 });
+            }
+        });
+
+
+        button6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ArrayList<EBButtonModel> buttonModels = new ArrayList<>();
+                buttonModels.add(new EBButtonModel("Button1", new SingleEventListener() {
+                    @Override
+                    public void onComplete() {
+                        Toast.makeText(MainActivity.this,"Clicked.",Toast.LENGTH_SHORT).show();
+                    }
+                }, R.color.md_blue_700));
+                buttonModels.add(new EBButtonModel("Button2", new SingleEventListener() {
+                    @Override
+                    public void onComplete() {
+                        Toast.makeText(MainActivity.this,"Clicked.",Toast.LENGTH_SHORT).show();
+                    }
+                }, R.color.md_red_700));
+                buttonModels.add(new EBButtonModel("Button3", new SingleEventListener() {
+                    @Override
+                    public void onComplete() {
+                        Toast.makeText(MainActivity.this,"Clicked.",Toast.LENGTH_SHORT).show();
+                    }
+                }, R.color.md_green_700));
+                EBCustomDialogModel dialogModel = new EBCustomDialogModel("Choose one",null, buttonModels, ButtonsSequence.VERTICAL, VerticalButtonsGravity.LEFT);
+                EBDialogUtilities.showCustomDialog(MainActivity.this, dialogModel);
             }
         });
 

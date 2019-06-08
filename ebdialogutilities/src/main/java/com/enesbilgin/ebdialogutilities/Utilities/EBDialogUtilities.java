@@ -10,10 +10,12 @@ import androidx.fragment.app.FragmentManager;
 import com.enesbilgin.ebdialogutilities.Constants.AlertViewType;
 import com.enesbilgin.ebdialogutilities.Constants.DialogTheme;
 import com.enesbilgin.ebdialogutilities.Fragments.EBAlertViewDialog;
+import com.enesbilgin.ebdialogutilities.Fragments.EBCustomDialog;
 import com.enesbilgin.ebdialogutilities.Fragments.VoteAppDialog;
 import com.enesbilgin.ebdialogutilities.Interfaces.CompletionListener;
 import com.enesbilgin.ebdialogutilities.Interfaces.SingleEventListener;
 import com.enesbilgin.ebdialogutilities.Interfaces.VoteChoiceListener;
+import com.enesbilgin.ebdialogutilities.Models.EBCustomDialogModel;
 import com.enesbilgin.ebdialogutilities.R;
 /**
  * Copyright 2019
@@ -93,6 +95,12 @@ public class EBDialogUtilities {
         EBAlertViewDialog dialog = EBAlertViewDialog.newInstance(AlertViewType.LOADING_BOX);
         show(dialog, context);
         return dialog;
+    }
+
+    /**Custom Dialog**/
+    public static void showCustomDialog(Context context, EBCustomDialogModel dialogModel) {
+        EBCustomDialog customDialog = EBCustomDialog.newInstance(dialogModel);
+        show(customDialog, context);
     }
 
     /**Common Show**/
