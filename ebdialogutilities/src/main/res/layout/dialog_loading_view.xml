@@ -7,7 +7,7 @@
     android:background="@color/transparent">
 
     <com.github.ybq.android.spinkit.SpinKitView
-        android:id="@+id/pictureSpinKit"
+        android:id="@+id/spinkitView"
         style="@style/SpinKitView.Large.Circle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

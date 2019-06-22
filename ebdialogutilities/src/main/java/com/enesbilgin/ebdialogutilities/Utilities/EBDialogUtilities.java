@@ -8,15 +8,20 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 
 import com.enesbilgin.ebdialogutilities.Constants.AlertViewType;
+import com.enesbilgin.ebdialogutilities.Constants.ButtonsSequence;
 import com.enesbilgin.ebdialogutilities.Constants.DialogTheme;
+import com.enesbilgin.ebdialogutilities.Constants.VerticalButtonsGravity;
 import com.enesbilgin.ebdialogutilities.Fragments.EBAlertViewDialog;
 import com.enesbilgin.ebdialogutilities.Fragments.EBCustomDialog;
-import com.enesbilgin.ebdialogutilities.Fragments.VoteAppDialog;
 import com.enesbilgin.ebdialogutilities.Interfaces.CompletionListener;
 import com.enesbilgin.ebdialogutilities.Interfaces.SingleEventListener;
 import com.enesbilgin.ebdialogutilities.Interfaces.VoteChoiceListener;
+import com.enesbilgin.ebdialogutilities.Models.EBButtonModel;
 import com.enesbilgin.ebdialogutilities.Models.EBCustomDialogModel;
 import com.enesbilgin.ebdialogutilities.R;
+
+import java.util.ArrayList;
+
 /**
  * Copyright 2019
  * Enes Bilgin
@@ -27,14 +32,23 @@ public class EBDialogUtilities {
         StyleUtilities.setDialogTheme(context, dialogTheme);
     }
     /**Info**/
-    public static void showInfoBox(Context context, String header_text, String message_text, SingleEventListener singleEventListener) {
-        EBAlertViewDialog dialog = EBAlertViewDialog.newInstance(AlertViewType.INFO_BOX, header_text, message_text, singleEventListener);
-        show(dialog, context);
+    public static void showInfoBox(Context context, String header_text, String message_text, final SingleEventListener singleEventListener) {
+        ArrayList<EBButtonModel> buttonModels = new ArrayList<>();
+
+        buttonModels.add(new EBButtonModel(context.getString(R.string.eb_no), new SingleEventListener() {
+            @Override
+            public void onComplete() {
+                if(singleEventListener!=null)
+                    singleEventListener.onComplete();
+            }
+        }, R.color.md_light_blue_800));
+
+        EBCustomDialogModel dialogModel = new EBCustomDialogModel(header_text, message_text, buttonModels, ButtonsSequence.VERTICAL, VerticalButtonsGravity.CENTER);
+        showCustomDialog(context, dialogModel);
     }
 
     public static void showInfoBox(Context context,String header_text, String message_text) {
-        EBAlertViewDialog dialog = EBAlertViewDialog.newInstance(AlertViewType.INFO_BOX, header_text, message_text);
-        show(dialog, context);
+       showInfoBox(context, header_text, message_text, null);
     }
 
     public static void showInfoBox(Context context, String message_text) {
@@ -44,8 +58,7 @@ public class EBDialogUtilities {
 
     public static void showInfoBox(Context context, String message_text, SingleEventListener singleEventListener) {
         String header_text = context.getString(R.string.eb_information);
-        EBAlertViewDialog dialog = EBAlertViewDialog.newInstance(AlertViewType.INFO_BOX, header_text, message_text, singleEventListener);
-        show(dialog, context);
+        showInfoBox(context, header_text, message_text, singleEventListener);
     }
 
     public static void showNotSupportedInfoBox(Context context) {
@@ -54,14 +67,24 @@ public class EBDialogUtilities {
     }
 
     /**Error**/
-    public static void showErrorBox(Context context,String header_text, String message_text, SingleEventListener singleEventListener) {
-        EBAlertViewDialog dialog = EBAlertViewDialog.newInstance(AlertViewType.ERROR_BOX,header_text,message_text, singleEventListener);
-        show(dialog, context);
+    public static void showErrorBox(Context context, String header_text, String message_text, final SingleEventListener singleEventListener) {
+        ArrayList<EBButtonModel> buttonModels = new ArrayList<>();
+
+        buttonModels.add(new EBButtonModel(context.getString(R.string.eb_no), new SingleEventListener() {
+            @Override
+            public void onComplete() {
+                if(singleEventListener!=null)
+                    singleEventListener.onComplete();
+            }
+        }, R.color.md_light_blue_800));
+
+        EBCustomDialogModel dialogModel = new EBCustomDialogModel(header_text, message_text, buttonModels, ButtonsSequence.VERTICAL, VerticalButtonsGravity.CENTER);
+        dialogModel.setHeaderTextColor(R.color.md_red_700);
+        showCustomDialog(context, dialogModel);
     }
 
     public static void showErrorBox(Context context,String header_text, String message_text) {
-        EBAlertViewDialog dialog = EBAlertViewDialog.newInstance(AlertViewType.ERROR_BOX,header_text,message_text);
-        show(dialog, context);
+        showErrorBox(context, header_text, message_text, null);
     }
 
     public static void showErrorBox(Context context, String message_text) {
@@ -75,26 +98,73 @@ public class EBDialogUtilities {
     }
 
     /**Confirm**/
-    public static void showConfirmBox(Context context, String header_text, String message_text, CompletionListener completionListener) {
-        EBAlertViewDialog dialog = EBAlertViewDialog.newInstance(AlertViewType.CONFIRM_BOX,header_text,message_text,completionListener);
-        show(dialog, context);
+    public static void showConfirmBox(Context context, String header_text, String message_text, final CompletionListener completionListener) {
+
+        ArrayList<EBButtonModel> buttonModels = new ArrayList<>();
+
+        buttonModels.add(new EBButtonModel(context.getString(R.string.eb_no), new SingleEventListener() {
+            @Override
+            public void onComplete() {
+                if(completionListener!=null)
+                    completionListener.onCancel();
+            }
+        }, R.color.md_red_900));
+
+        buttonModels.add(new EBButtonModel(context.getString(R.string.eb_yes), new SingleEventListener() {
+            @Override
+            public void onComplete() {
+                if(completionListener!=null)
+                    completionListener.onSuccess();
+            }
+        }, R.color.md_green_600));
+
+        EBCustomDialogModel dialogModel = new EBCustomDialogModel(header_text, message_text, buttonModels, ButtonsSequence.HORIZONTAL);
+        showCustomDialog(context, dialogModel);
     }
 
-    public static void showVoteBox(Context context,String app_name, VoteChoiceListener voteChoiceListener) {
-        VoteAppDialog voteAppDialog = VoteAppDialog.newInstance(app_name, voteChoiceListener);
-        show(voteAppDialog, context);
-    }
+    public static void showVoteBox(Context context, String app_name, final VoteChoiceListener voteChoiceListener) {
+        String title;
 
-    public static void showVoteBox(Context context, VoteChoiceListener voteChoiceListener) {
-        VoteAppDialog voteAppDialog = VoteAppDialog.newInstance(voteChoiceListener);
-        show(voteAppDialog, context);
+        if(app_name==null)
+            title = context.getString(R.string.eb_vote_header);
+        else title = String.format(context.getString(R.string.eb_vote_header_custom), app_name);
+
+        ArrayList<EBButtonModel> buttonModels = new ArrayList<>();
+
+        buttonModels.add(new EBButtonModel(context.getString(R.string.eb_later), new SingleEventListener() {
+            @Override
+            public void onComplete() {
+                if(voteChoiceListener!=null)
+                    voteChoiceListener.onLater();
+            }
+        }, R.color.md_light_blue_800));
+
+        buttonModels.add(new EBButtonModel(context.getString(R.string.eb_no), new SingleEventListener() {
+            @Override
+            public void onComplete() {
+                if(voteChoiceListener!=null)
+                    voteChoiceListener.onCancel();
+            }
+        }, R.color.md_red_900));
+
+        buttonModels.add(new EBButtonModel(context.getString(R.string.eb_yes), new SingleEventListener() {
+            @Override
+            public void onComplete() {
+                if(voteChoiceListener!=null)
+                    voteChoiceListener.onRedirect();
+            }
+        }, R.color.md_green_600));
+
+        EBCustomDialogModel dialogModel = new EBCustomDialogModel(title, context.getString(R.string.eb_vote_message), buttonModels, ButtonsSequence.HORIZONTAL);
+        showCustomDialog(context, dialogModel);
     }
 
     /**Loading**/
-    public static EBAlertViewDialog showLoadingBox(Context context) {
+    public static EBAlertViewDialog showLoadingBox(Context context, Integer themeColor) {
         EBAlertViewDialog dialog = EBAlertViewDialog.newInstance(AlertViewType.LOADING_BOX);
         show(dialog, context);
         return dialog;
+        //TODO remake
     }
 
     /**Custom Dialog**/

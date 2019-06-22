@@ -75,9 +75,11 @@ public class EBCustomDialog extends DialogFragment {
         alert_view_message = view.findViewById(R.id.alert_view_message);
         buttonsLayout = view.findViewById(R.id.buttonsLayout);
 
-        if(dialogModel.getHeader_text()!=null && !dialogModel.getHeader_text().equals(""))
+        if(dialogModel.getHeader_text()!=null && !dialogModel.getHeader_text().equals("")) {
             alert_view_header.setText(dialogModel.getHeader_text());
-        else alert_view_header.setVisibility(View.GONE);
+            if(dialogModel.getHeaderTextColor()!=null)
+                alert_view_header.setTextColor(dialogModel.getHeaderTextColor());
+        } else alert_view_header.setVisibility(View.GONE);
 
         if(dialogModel.getMessage_text()!=null && !dialogModel.getMessage_text().equals(""))
             alert_view_message.setText(dialogModel.getMessage_text());
