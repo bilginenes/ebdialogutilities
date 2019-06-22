@@ -11,8 +11,8 @@ import com.enesbilgin.ebdialogutilities.Constants.AlertViewType;
 import com.enesbilgin.ebdialogutilities.Constants.ButtonsSequence;
 import com.enesbilgin.ebdialogutilities.Constants.DialogTheme;
 import com.enesbilgin.ebdialogutilities.Constants.VerticalButtonsGravity;
-import com.enesbilgin.ebdialogutilities.Fragments.EBAlertViewDialog;
 import com.enesbilgin.ebdialogutilities.Fragments.EBCustomDialog;
+import com.enesbilgin.ebdialogutilities.Fragments.EBLoadingDialog;
 import com.enesbilgin.ebdialogutilities.Interfaces.CompletionListener;
 import com.enesbilgin.ebdialogutilities.Interfaces.SingleEventListener;
 import com.enesbilgin.ebdialogutilities.Interfaces.VoteChoiceListener;
@@ -62,8 +62,7 @@ public class EBDialogUtilities {
     }
 
     public static void showNotSupportedInfoBox(Context context) {
-        EBAlertViewDialog dialog = EBAlertViewDialog.newInstance(AlertViewType.INFO_BOX,context.getString(R.string.eb_information),context.getString(R.string.eb_not_supported_annotation));
-        show(dialog, context);
+        showInfoBox(context, context.getString(R.string.eb_not_supported_annotation));
     }
 
     /**Error**/
@@ -160,11 +159,14 @@ public class EBDialogUtilities {
     }
 
     /**Loading**/
-    public static EBAlertViewDialog showLoadingBox(Context context, Integer themeColor) {
-        EBAlertViewDialog dialog = EBAlertViewDialog.newInstance(AlertViewType.LOADING_BOX);
+    public static EBLoadingDialog showLoadingBox(Context context, Integer themeColor) {
+        EBLoadingDialog dialog = EBLoadingDialog.newInstance(themeColor);
         show(dialog, context);
         return dialog;
-        //TODO remake
+    }
+
+    public static EBLoadingDialog showLoadingBox(Context context) {
+        return showLoadingBox(context, null);
     }
 
     /**Custom Dialog**/
