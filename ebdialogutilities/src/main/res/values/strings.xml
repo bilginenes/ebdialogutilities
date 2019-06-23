@@ -18,11 +18,11 @@
     <string name="eb_lorem_ipsum_short" translatable="false">Lorem ipsum dolor sit amet</string>
 
     <!--General expression-->
-    <string name="eb_yes">Yes</string>
-    <string name="eb_no">No</string>
-    <string name="eb_ok">Okay</string>
+    <string name="eb_yes_big">YES</string>
+    <string name="eb_no_big">NO</string>
+    <string name="eb_ok_big">OKAY</string>
     <string name="eb_information">Information</string>
-    <string name="eb_later">Later</string>
+    <string name="eb_later_big">LATER</string>
     <string name="eb_error">Error</string>
 
 </resources>

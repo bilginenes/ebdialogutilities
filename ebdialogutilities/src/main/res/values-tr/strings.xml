@@ -14,10 +14,10 @@
     <string name="eb_vote_message">Google Play Store\'da yıldız vererek bizi destekleyebilirsiniz. Desteğiniz için teşekkürler :)</string>
 
     <!--General expression-->
-    <string name="eb_yes">Evet</string>
-    <string name="eb_no">Hayır</string>
-    <string name="eb_ok">Tamam</string>
+    <string name="eb_yes_big">EVET</string>
+    <string name="eb_no_big">HAYIR</string>
+    <string name="eb_ok_big">TAMAM</string>
     <string name="eb_information">Bilgilendirme</string>
-    <string name="eb_later">Sonra</string>
+    <string name="eb_later_big">SONRA</string>
     <string name="eb_error">Hata</string>
 </resources>

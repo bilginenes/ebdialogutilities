@@ -35,7 +35,7 @@ public class EBDialogUtilities {
     public static void showInfoBox(Context context, String header_text, String message_text, final SingleEventListener singleEventListener) {
         ArrayList<EBButtonModel> buttonModels = new ArrayList<>();
 
-        buttonModels.add(new EBButtonModel(context.getString(R.string.eb_no), new SingleEventListener() {
+        buttonModels.add(new EBButtonModel(context.getString(R.string.eb_ok_big), new SingleEventListener() {
             @Override
             public void onComplete() {
                 if(singleEventListener!=null)
@@ -69,7 +69,7 @@ public class EBDialogUtilities {
     public static void showErrorBox(Context context, String header_text, String message_text, final SingleEventListener singleEventListener) {
         ArrayList<EBButtonModel> buttonModels = new ArrayList<>();
 
-        buttonModels.add(new EBButtonModel(context.getString(R.string.eb_no), new SingleEventListener() {
+        buttonModels.add(new EBButtonModel(context.getString(R.string.eb_ok_big), new SingleEventListener() {
             @Override
             public void onComplete() {
                 if(singleEventListener!=null)
@@ -101,7 +101,7 @@ public class EBDialogUtilities {
 
         ArrayList<EBButtonModel> buttonModels = new ArrayList<>();
 
-        buttonModels.add(new EBButtonModel(context.getString(R.string.eb_no), new SingleEventListener() {
+        buttonModels.add(new EBButtonModel(context.getString(R.string.eb_no_big), new SingleEventListener() {
             @Override
             public void onComplete() {
                 if(completionListener!=null)
@@ -109,7 +109,7 @@ public class EBDialogUtilities {
             }
         }, R.color.md_red_900));
 
-        buttonModels.add(new EBButtonModel(context.getString(R.string.eb_yes), new SingleEventListener() {
+        buttonModels.add(new EBButtonModel(context.getString(R.string.eb_yes_big), new SingleEventListener() {
             @Override
             public void onComplete() {
                 if(completionListener!=null)
@@ -130,7 +130,7 @@ public class EBDialogUtilities {
 
         ArrayList<EBButtonModel> buttonModels = new ArrayList<>();
 
-        buttonModels.add(new EBButtonModel(context.getString(R.string.eb_later), new SingleEventListener() {
+        buttonModels.add(new EBButtonModel(context.getString(R.string.eb_later_big), new SingleEventListener() {
             @Override
             public void onComplete() {
                 if(voteChoiceListener!=null)
@@ -138,7 +138,7 @@ public class EBDialogUtilities {
             }
         }, R.color.md_light_blue_800));
 
-        buttonModels.add(new EBButtonModel(context.getString(R.string.eb_no), new SingleEventListener() {
+        buttonModels.add(new EBButtonModel(context.getString(R.string.eb_no_big), new SingleEventListener() {
             @Override
             public void onComplete() {
                 if(voteChoiceListener!=null)
@@ -146,7 +146,7 @@ public class EBDialogUtilities {
             }
         }, R.color.md_red_900));
 
-        buttonModels.add(new EBButtonModel(context.getString(R.string.eb_yes), new SingleEventListener() {
+        buttonModels.add(new EBButtonModel(context.getString(R.string.eb_yes_big), new SingleEventListener() {
             @Override
             public void onComplete() {
                 if(voteChoiceListener!=null)

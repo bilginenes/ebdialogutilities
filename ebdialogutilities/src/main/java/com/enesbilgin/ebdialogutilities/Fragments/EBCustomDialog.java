@@ -78,7 +78,7 @@ public class EBCustomDialog extends DialogFragment {
         if(dialogModel.getHeader_text()!=null && !dialogModel.getHeader_text().equals("")) {
             alert_view_header.setText(dialogModel.getHeader_text());
             if(dialogModel.getHeaderTextColor()!=null)
-                alert_view_header.setTextColor(dialogModel.getHeaderTextColor());
+                alert_view_header.setTextColor(getContext().getColor(dialogModel.getHeaderTextColor()));
         } else alert_view_header.setVisibility(View.GONE);
 
         if(dialogModel.getMessage_text()!=null && !dialogModel.getMessage_text().equals(""))
