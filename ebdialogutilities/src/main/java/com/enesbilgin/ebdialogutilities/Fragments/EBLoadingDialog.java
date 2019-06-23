@@ -60,7 +60,7 @@ public class EBLoadingDialog extends DialogFragment {
 
         if(themeColor!=null) {
             spinKitView = view.findViewById(R.id.spinkitView);
-            spinKitView.setColor(themeColor);
+            spinKitView.setColor(getContext().getColor(themeColor));
         }
 
         return view;
