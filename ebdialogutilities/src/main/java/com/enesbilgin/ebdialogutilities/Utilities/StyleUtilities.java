@@ -36,7 +36,7 @@ public class StyleUtilities {
         return DialogTheme.getDialogThemeByCode(code);
     }
 
-    public static Integer getDialogViewID(DialogTheme dialogTheme) {
+    /*public static Integer getDialogViewID(DialogTheme dialogTheme) {
 
         switch (dialogTheme) {
             case DARK_1:
@@ -46,6 +46,6 @@ public class StyleUtilities {
             default:
                 return getDialogViewID(DEFAULT_DIALOG_THEME);
         }
-    }
+    }*/
 
 }
