@@ -120,7 +120,6 @@ public class EBCustomDialog extends DialogFragment {
                     else if(dialogModel.getVerticalButtonsGravity()== VerticalButtonsGravity.LEFT)
                         button.setTextAlignment(Button.TEXT_ALIGNMENT_TEXT_START);
 
-
                     LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                     button.setLayoutParams(params);
                 }

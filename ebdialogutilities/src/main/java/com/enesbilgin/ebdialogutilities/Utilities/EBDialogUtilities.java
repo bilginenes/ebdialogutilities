@@ -7,7 +7,6 @@ import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 
-import com.enesbilgin.ebdialogutilities.Constants.AlertViewType;
 import com.enesbilgin.ebdialogutilities.Constants.ButtonsSequence;
 import com.enesbilgin.ebdialogutilities.Constants.DialogTheme;
 import com.enesbilgin.ebdialogutilities.Constants.VerticalButtonsGravity;
@@ -180,7 +179,8 @@ public class EBDialogUtilities {
     {
         if(context instanceof FragmentActivity) {
             FragmentManager fm = ((FragmentActivity) context).getSupportFragmentManager();
-            dialog.show(fm, "dialog");
+            //dialog.show(fm, "dialog");
+            fm.beginTransaction().add(dialog, "dialog").commitAllowingStateLoss();
         }else {
             Toast.makeText(context,R.string.eb_debug_notation,Toast.LENGTH_SHORT).show();
         }
