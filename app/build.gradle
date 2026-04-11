@@ -1,11 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 29
+    namespace 'com.enesbilgin.ebdialogutilities'
+    compileSdkVersion 34
     defaultConfig {
         applicationId "com.enesbilgin.ebdialogutilities"
         minSdkVersion 24
-        targetSdkVersion 29
+        targetSdkVersion 34
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
