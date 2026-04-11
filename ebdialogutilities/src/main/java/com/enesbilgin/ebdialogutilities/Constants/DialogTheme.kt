@@ -1,34 +1,26 @@
 /*
  * Copyright (c)
- * 2019.
+ * 2026.
  * Enes Bilgin
  */
 
-package com.enesbilgin.ebdialogutilities.Constants;
+package com.enesbilgin.ebdialogutilities.Constants
 
-import com.enesbilgin.ebdialogutilities.Utilities.StyleUtilities;
+import com.enesbilgin.ebdialogutilities.Utilities.StyleUtilities
 
-public enum  DialogTheme {
+enum class DialogTheme(val code: Int) {
 
     DARK_1(0),
     LIGHT_1(1);
 
-    private int code;
+    companion object {
+        @JvmStatic
+        fun getDialogThemeByCode(code: Int): DialogTheme {
+            for (theme in values())
+                if (theme.code == code)
+                    return theme
 
-    DialogTheme(int code) {
-        this.code=code;
+            return StyleUtilities.DEFAULT_DIALOG_THEME
+        }
     }
-
-    public int getCode() {
-        return code;
-    }
-
-    public static DialogTheme getDialogThemeByCode(int code) {
-        for (DialogTheme theme:DialogTheme.values())
-            if(theme.code==code)
-                return theme;
-
-        return StyleUtilities.DEFAULT_DIALOG_THEME;
-    }
-
 }

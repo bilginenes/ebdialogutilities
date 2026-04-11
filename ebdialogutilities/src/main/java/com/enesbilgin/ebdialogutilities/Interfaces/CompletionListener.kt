@@ -1,11 +1,18 @@
-package com.enesbilgin.ebdialogutilities.Interfaces;
+/*
+ * Copyright (c)
+ * 2026.
+ * Enes Bilgin
+ */
 
-import java.io.Serializable;
+package com.enesbilgin.ebdialogutilities.Interfaces
+
+import java.io.Serializable
+
 /**
  * Copyright 2019
  * Enes Bilgin
  */
-public interface CompletionListener extends Serializable {
-    void onSuccess();
-    void onCancel();
+interface CompletionListener : Serializable {
+    fun onSuccess()
+    fun onCancel()
 }

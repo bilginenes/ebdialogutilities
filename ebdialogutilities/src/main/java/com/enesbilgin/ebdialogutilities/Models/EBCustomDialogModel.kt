@@ -1,116 +1,50 @@
 /*
  * Copyright (c)
- * 2019.
+ * 2026.
  * Enes Bilgin
  */
 
-package com.enesbilgin.ebdialogutilities.Models;
+package com.enesbilgin.ebdialogutilities.Models
 
-import com.enesbilgin.ebdialogutilities.Constants.ButtonsSequence;
-import com.enesbilgin.ebdialogutilities.Constants.VerticalButtonsGravity;
-import java.util.ArrayList;
-import javax.annotation.Nullable;
+import com.enesbilgin.ebdialogutilities.Constants.ButtonsSequence
+import com.enesbilgin.ebdialogutilities.Constants.VerticalButtonsGravity
+import java.util.ArrayList
 
-public class EBCustomDialogModel {
+class EBCustomDialogModel {
 
+    var header_text: String? = null
+    var message_text: String? = null
+    var buttonModels: ArrayList<EBButtonModel>? = null
+    var buttonsSequence: ButtonsSequence? = null
+    var verticalButtonsGravity: VerticalButtonsGravity? = null
+    var headerTextColor: Int? = null
+    var messageTextColor: Int? = null
+    var headerTextSize: Int? = null
+    var messageTextSize: Int? = null
 
-    private String header_text;
-    private String message_text;
-    private ArrayList<EBButtonModel> buttonModels;
-
-    private ButtonsSequence buttonsSequence;
-    private VerticalButtonsGravity verticalButtonsGravity;
-
-    private Integer headerTextColor;
-    private Integer messageTextColor;
-
-    private Integer headerTextSize;
-    private Integer messageTextSize;
-
-    public EBCustomDialogModel(@Nullable String header_text,@Nullable  String message_text, ArrayList<EBButtonModel> buttonModels, ButtonsSequence buttonsSequence, VerticalButtonsGravity verticalButtonsGravity) {
-        this.header_text = header_text;
-        this.message_text = message_text;
-        this.buttonModels = buttonModels;
-        this.buttonsSequence = buttonsSequence;
-        this.verticalButtonsGravity = verticalButtonsGravity;
+    constructor(
+        header_text: String?,
+        message_text: String?,
+        buttonModels: ArrayList<EBButtonModel>?,
+        buttonsSequence: ButtonsSequence?,
+        verticalButtonsGravity: VerticalButtonsGravity?
+    ) {
+        this.header_text = header_text
+        this.message_text = message_text
+        this.buttonModels = buttonModels
+        this.buttonsSequence = buttonsSequence
+        this.verticalButtonsGravity = verticalButtonsGravity
     }
 
-    public EBCustomDialogModel(@Nullable String header_text, @Nullable String message_text, ArrayList<EBButtonModel> buttonModels, ButtonsSequence buttonsSequence) {
-        this.header_text = header_text;
-        this.message_text = message_text;
-        this.buttonModels = buttonModels;
-        this.buttonsSequence = buttonsSequence;
-    }
-
-    public String getHeader_text() {
-        return header_text;
-    }
-
-    public String getMessage_text() {
-        return message_text;
-    }
-
-    public ArrayList<EBButtonModel> getButtonModels() {
-        return buttonModels;
-    }
-
-    public ButtonsSequence getButtonsSequence() {
-        return buttonsSequence;
-    }
-
-    public VerticalButtonsGravity getVerticalButtonsGravity() {
-        return verticalButtonsGravity;
-    }
-
-    public void setHeader_text(String header_text) {
-        this.header_text = header_text;
-    }
-
-    public void setMessage_text(String message_text) {
-        this.message_text = message_text;
-    }
-
-    public void setButtonModels(ArrayList<EBButtonModel> buttonModels) {
-        this.buttonModels = buttonModels;
-    }
-
-    public void setButtonsSequence(ButtonsSequence buttonsSequence) {
-        this.buttonsSequence = buttonsSequence;
-    }
-
-    public void setVerticalButtonsGravity(VerticalButtonsGravity verticalButtonsGravity) {
-        this.verticalButtonsGravity = verticalButtonsGravity;
-    }
-
-    public Integer getHeaderTextColor() {
-        return headerTextColor;
-    }
-
-    public void setHeaderTextColor(Integer headerTextColor) {
-        this.headerTextColor = headerTextColor;
-    }
-
-    public Integer getMessageTextColor() {
-        return messageTextColor;
-    }
-
-    public void setMessageTextColor(Integer messageTextColor) {
-        this.messageTextColor = messageTextColor;
-    }
-
-    public Integer getHeaderTextSize() {
-        return headerTextSize;
-    }
-
-    public void setHeaderTextSize(Integer headerTextSize) {
-        this.headerTextSize = headerTextSize;
-    }
-
-    public Integer getMessageTextSize() {
-        return messageTextSize;
-    }
-
-    public void setMessageTextSize(Integer messageTextSize) {
-        this.messageTextSize = messageTextSize;
+    constructor(
+        header_text: String?,
+        message_text: String?,
+        buttonModels: ArrayList<EBButtonModel>?,
+        buttonsSequence: ButtonsSequence?
+    ) {
+        this.header_text = header_text
+        this.message_text = message_text
+        this.buttonModels = buttonModels
+        this.buttonsSequence = buttonsSequence
     }
 }

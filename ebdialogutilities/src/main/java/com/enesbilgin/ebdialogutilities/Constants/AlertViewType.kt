@@ -1,12 +1,12 @@
 /*
  * Copyright (c)
- * 2019.
+ * 2026.
  * Enes Bilgin
  */
 
-package com.enesbilgin.ebdialogutilities.Constants;
+package com.enesbilgin.ebdialogutilities.Constants
 
-public enum AlertViewType {
+enum class AlertViewType {
     CONFIRM_BOX, //Header, Message, Confirm Listener, Refuse Listener
     INFO_BOX, //Header, Message
     ERROR_BOX, //Header, Message

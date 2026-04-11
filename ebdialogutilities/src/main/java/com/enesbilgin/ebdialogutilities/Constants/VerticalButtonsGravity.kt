@@ -1,12 +1,12 @@
 /*
  * Copyright (c)
- * 2019.
+ * 2026.
  * Enes Bilgin
  */
 
-package com.enesbilgin.ebdialogutilities.Constants;
+package com.enesbilgin.ebdialogutilities.Constants
 
-public enum VerticalButtonsGravity {
+enum class VerticalButtonsGravity {
     LEFT,
     RIGHT,
     CENTER

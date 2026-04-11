@@ -1,133 +1,132 @@
 /*
  * Copyright (c)
- * 2019.
+ * 2026.
  * Enes Bilgin
  */
 
-package com.enesbilgin.ebdialogutilities.Fragments;
+package com.enesbilgin.ebdialogutilities.Fragments
 
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.Button
+import android.widget.LinearLayout
+import android.widget.TextView
+import androidx.appcompat.view.ContextThemeWrapper
+import androidx.fragment.app.DialogFragment
+import com.enesbilgin.ebdialogutilities.Constants.ButtonsSequence
+import com.enesbilgin.ebdialogutilities.Constants.DialogTheme
+import com.enesbilgin.ebdialogutilities.Constants.VerticalButtonsGravity
+import com.enesbilgin.ebdialogutilities.Models.EBButtonModel
+import com.enesbilgin.ebdialogutilities.Models.EBCustomDialogModel
+import com.enesbilgin.ebdialogutilities.R
+import com.enesbilgin.ebdialogutilities.Utilities.StyleUtilities
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.view.ContextThemeWrapper;
-import androidx.fragment.app.DialogFragment;
+class EBCustomDialog : DialogFragment() {
 
-import com.enesbilgin.ebdialogutilities.Constants.ButtonsSequence;
-import com.enesbilgin.ebdialogutilities.Constants.DialogTheme;
-import com.enesbilgin.ebdialogutilities.Constants.VerticalButtonsGravity;
-import com.enesbilgin.ebdialogutilities.Models.EBButtonModel;
-import com.enesbilgin.ebdialogutilities.Models.EBCustomDialogModel;
-import com.enesbilgin.ebdialogutilities.R;
-import com.enesbilgin.ebdialogutilities.Utilities.StyleUtilities;
+    private var dialogModel: EBCustomDialogModel? = null
+    private var alert_view_header: TextView? = null
+    private var alert_view_message: TextView? = null
+    private var buttonsLayout: LinearLayout? = null
 
-public class EBCustomDialog extends DialogFragment {
-
-    public static EBCustomDialog newInstance(EBCustomDialogModel dialogModel){
-        EBCustomDialog ebCustomDialog = new EBCustomDialog();
-        ebCustomDialog.dialogModel = dialogModel;
-        return ebCustomDialog;
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        retainInstance = true
     }
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setRetainInstance(true);
-    }
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        super.onCreateView(inflater, container, savedInstanceState)
 
-    private EBCustomDialogModel dialogModel;
-    private View view;
-    private TextView alert_view_header, alert_view_message;
-    private LinearLayout buttonsLayout;
+        dialog?.window?.attributes?.windowAnimations = R.style.DialogAnims
+        dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        isCancelable = false
 
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        super.onCreateView(inflater,container,savedInstanceState);
+        if (dialogModel == null)
+            return null
 
-        getDialog().getWindow().getAttributes().windowAnimations = R.style.DialogAnims;
-        getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        setCancelable(false);
+        val dialogTheme = StyleUtilities.getDialogTheme(context)
+        val view: View
+        val buttonStyle: Int
 
-        if(dialogModel==null)
-            return null;
-
-        int buttonStyle;
-        DialogTheme dialogTheme = StyleUtilities.getDialogTheme(getContext());
-
-        if(dialogTheme == DialogTheme.LIGHT_1) {
-            view = inflater.inflate(R.layout.dialog_light_custom, container, false);
-            buttonStyle = R.style.DefaultDarkButton;
+        if (dialogTheme == DialogTheme.LIGHT_1) {
+            view = inflater.inflate(R.layout.dialog_light_custom, container, false)
+            buttonStyle = R.style.DefaultDarkButton
         } else {
-            view = inflater.inflate(R.layout.dialog_dark_custom, container, false);
-            buttonStyle = R.style.DefaultWhiteButton;
+            view = inflater.inflate(R.layout.dialog_dark_custom, container, false)
+            buttonStyle = R.style.DefaultWhiteButton
         }
 
-        alert_view_header = view.findViewById(R.id.alert_view_header);
-        alert_view_message = view.findViewById(R.id.alert_view_message);
-        buttonsLayout = view.findViewById(R.id.buttonsLayout);
+        alert_view_header = view.findViewById(R.id.alert_view_header)
+        alert_view_message = view.findViewById(R.id.alert_view_message)
+        buttonsLayout = view.findViewById(R.id.buttonsLayout)
 
-        if(dialogModel.getHeader_text()!=null && !dialogModel.getHeader_text().equals("")) {
-            alert_view_header.setText(dialogModel.getHeader_text());
-            if(dialogModel.getHeaderTextColor()!=null)
-                alert_view_header.setTextColor(getContext().getColor(dialogModel.getHeaderTextColor()));
-        } else alert_view_header.setVisibility(View.GONE);
+        if (!dialogModel?.header_text.isNullOrEmpty()) {
+            alert_view_header?.text = dialogModel?.header_text
+            dialogModel?.headerTextColor?.let {
+                alert_view_header?.setTextColor(requireContext().getColor(it))
+            }
+        } else {
+            alert_view_header?.visibility = View.GONE
+        }
 
-        if(dialogModel.getMessage_text()!=null && !dialogModel.getMessage_text().equals(""))
-            alert_view_message.setText(dialogModel.getMessage_text());
-        else alert_view_message.setVisibility(View.GONE);
+        if (!dialogModel?.message_text.isNullOrEmpty()) {
+            alert_view_message?.text = dialogModel?.message_text
+        } else {
+            alert_view_message?.visibility = View.GONE
+        }
 
-        if(dialogModel.getButtonsSequence()== ButtonsSequence.VERTICAL)
-            buttonsLayout.setOrientation(LinearLayout.VERTICAL);
-        else buttonsLayout.setOrientation(LinearLayout.HORIZONTAL);
+        if (dialogModel?.buttonsSequence == ButtonsSequence.VERTICAL) {
+            buttonsLayout?.orientation = LinearLayout.VERTICAL
+        } else {
+            buttonsLayout?.orientation = LinearLayout.HORIZONTAL
+        }
 
-        if(dialogModel.getButtonModels()!=null && dialogModel.getButtonModels().size()>0) {
-            for(final EBButtonModel buttonModel: dialogModel.getButtonModels()) {
+        dialogModel?.buttonModels?.let { models ->
+            if (models.isNotEmpty()) {
+                for (buttonModel in models) {
+                    val button = Button(ContextThemeWrapper(context, buttonStyle), null, buttonStyle)
+                    button.text = buttonModel.buttonText
 
-                Button button = new Button(new ContextThemeWrapper(getContext(), buttonStyle), null, buttonStyle);
-                button.setText(buttonModel.getButtonText());
-
-                button.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if(buttonModel.getOnButtonClick()!=null)
-                            buttonModel.getOnButtonClick().onComplete();
-                        dismiss();
+                    button.setOnClickListener {
+                        buttonModel.onButtonClick?.onComplete()
+                        dismiss()
                     }
-                });
 
-                if(buttonModel.getButtonTextColor()!=null)
-                    button.setTextColor(getContext().getColor(buttonModel.getButtonTextColor()));
+                    buttonModel.buttonTextColor?.let {
+                        button.setTextColor(requireContext().getColor(it))
+                    }
 
-                if(dialogModel.getButtonsSequence()==ButtonsSequence.HORIZONTAL) {
-                    button.setTextAlignment(Button.TEXT_ALIGNMENT_CENTER);
-                    LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f);
-                    button.setLayoutParams(params);
-                } else if(dialogModel.getButtonsSequence()==ButtonsSequence.VERTICAL) {
-
-                    if(dialogModel.getVerticalButtonsGravity()== VerticalButtonsGravity.CENTER)
-                        button.setTextAlignment(Button.TEXT_ALIGNMENT_CENTER);
-                    else if(dialogModel.getVerticalButtonsGravity()== VerticalButtonsGravity.RIGHT)
-                        button.setTextAlignment(Button.TEXT_ALIGNMENT_TEXT_END);
-                    else if(dialogModel.getVerticalButtonsGravity()== VerticalButtonsGravity.LEFT)
-                        button.setTextAlignment(Button.TEXT_ALIGNMENT_TEXT_START);
-
-                    LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-                    button.setLayoutParams(params);
+                    if (dialogModel?.buttonsSequence == ButtonsSequence.HORIZONTAL) {
+                        button.textAlignment = View.TEXT_ALIGNMENT_CENTER
+                        val params = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f)
+                        button.layoutParams = params
+                    } else if (dialogModel?.buttonsSequence == ButtonsSequence.VERTICAL) {
+                        when (dialogModel?.verticalButtonsGravity) {
+                            VerticalButtonsGravity.CENTER -> button.textAlignment = View.TEXT_ALIGNMENT_CENTER
+                            VerticalButtonsGravity.RIGHT -> button.textAlignment = View.TEXT_ALIGNMENT_TEXT_END
+                            VerticalButtonsGravity.LEFT -> button.textAlignment = View.TEXT_ALIGNMENT_TEXT_START
+                            else -> {}
+                        }
+                        val params = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
+                        button.layoutParams = params
+                    }
+                    buttonsLayout?.addView(button)
                 }
-
-                buttonsLayout.addView(button);
             }
         }
 
-        return view;
+        return view
+    }
+
+    companion object {
+        @JvmStatic
+        fun newInstance(dialogModel: EBCustomDialogModel): EBCustomDialog {
+            val ebCustomDialog = EBCustomDialog()
+            ebCustomDialog.dialogModel = dialogModel
+            return ebCustomDialog
+        }
     }
 }
