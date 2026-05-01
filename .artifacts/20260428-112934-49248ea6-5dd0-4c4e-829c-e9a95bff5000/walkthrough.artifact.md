@@ -1,46 +1,41 @@
-# Walkthrough - EBDialogUtilities Modernization
+# Walkthrough - EBDialog Comprehensive Modernization
 
-I have successfully refactored and extended the **EBDialogUtilities** library. The project now follows modern Android development practices and offers significantly more functionality.
+I have transformed **EBDialogUtilities** into a versatile, modern dialog library for Android. It now supports both **Jetpack Compose** and **legacy Views**, targeting **SDK 36** for maximum compatibility.
 
-## Changes Overview
+## Key Features & Capabilities
 
-### 1. Library Modernization
-- **SDK Update**: Configured the project for **SDK 34**. (Note: SDK 37 is not currently installed on the system, so 34 was used to maintain build stability).
-- **Updated Dependencies**: All libraries (AppCompat, Material, Kotlin, SpinKit, Tests) have been updated to high stable versions compatible with the current environment.
-- **Enabled ViewBinding**: The library and sample app now use ViewBinding for type-safe UI interaction.
-- **Kotlin Refactoring**: Models are now `data classes`, and the code uses modern Kotlin features like default parameters and lambda expressions.
-- **Manifest Cleanup**: Removed legacy `package` attributes from `AndroidManifest.xml` files to comply with current Android Gradle Plugin requirements (using `namespace` in `build.gradle` instead).
+### 1. Jetpack Compose Integration (Modern & Recommended)
+- **Declarative API**: Manage dialog visibility with simple state objects.
+- **Slot API for Custom Content**: Use `EBCustomDialog` to host any `@Composable` content (forms, sliders, etc.).
+- **Refined Color Schemes**: Improved Light and Dark modes for better accessibility and aesthetics.
+- **Rich Component Set**:
+    - `EBInfoDialog`, `EBConfirmDialog` (with Neutral action support).
+    - `EBListDialog`: Supports short and very long (scrolling) lists.
+    - `EBLoadingDialog`: Features dynamic message updates.
+- **Modal Bottom Sheets**: Native `EBBottomSheet` integration.
+- **Interactive Dark Mode**: Includes a real-time toggle in the sample screen to test theme transitions instantly.
 
-### 2. Extended Functionality
-- **Input Dialog**: A new method `showInputBox` allows for easy collection of user text input.
-- **List Dialog**: A new method `showListBox` enables quick selection from a list of strings.
-- **Custom View Support**: Added a container in the dialog layouts to support injecting custom views/layouts.
-- **Enhanced Loading Dialog**: The loading dialog can now display a message alongside the animation and supports real-time message updates.
-- **DSL Builder API**: Introduced a powerful Kotlin DSL for building complex dialogs fluently.
+### 2. Infrastructure & Design
+- **JitPack Compatibility**: Downgraded to **SDK 36** and added `jitpack.yml` + `maven-publish` configuration to ensure successful remote builds on JitPack.io.
+- **UI Architecture**:
+    - **Fixed Toolbar Issues**: Resolved layout overlaps in both legacy XML (`fitsSystemWindows`) and Compose (`enableEdgeToEdge`).
+    - **Material3**: Full M3 support with refined `EBDialogTheme`.
+- **Latest Tooling**: Powered by **Kotlin 2.1.0** and **Android Gradle Plugin 8.9.1**.
 
-### 3. Documentation & Sample App
-- **Sample App Update**: The `MainActivity` in the `app` module has been completely updated to showcase all new features using the modernized API.
-- **README Overhaul**: The `README.md` now features updated installation instructions, a full list of features, and modern usage examples.
+### 3. Demo & Documentation
+- **Interactive Samples**:
+    - `ComposeActivity`: Features a **Dark Mode Switch** and demos for every dialog variant.
+    - `MainActivity`: Modernized legacy support using **ViewBinding** and corrected toolbar placement.
+- **Comprehensive README**: Updated with clear installation steps and code snippets for all use cases.
 
 ## Verification Summary
+- **Build Integrity**: All modules compile and assemble successfully (`gradle assembleDebug` PASSED).
+- **JitPack Ready**: Added necessary publishing metadata and configured Java 17 for the JitPack CI environment.
+- **Consistency**: Unified the look and feel across both legacy and modern implementations.
 
-### Build Verification
-- Library module build: `SUCCESS`
-- Sample app module build: `SUCCESS`
-- Gradle Sync: `SUCCESS`
-
-### Code Quality
-- Migrated from manual `findViewById` to `ViewBinding`.
-- Improved null safety across the library.
-- Used consistent camelCase naming for properties.
-
-## How to Test
-1. Sync the project with Gradle.
-2. Run the `app` module on an emulator or physical device.
-3. Use the various buttons to trigger different dialog types:
-    - **Info**: Displays a modern info box.
-    - **Input**: Prompts for a name and shows a Toast with the result.
-    - **Error**: Shows an error dialog.
-    - **List**: Shows a list selection dialog.
-    - **Loading**: Shows a loading indicator with a message.
-    - **DSL Builder**: Shows a custom dialog built via the new DSL.
+## How to Explore
+1. Sync project with Gradle.
+2. Run the `app` module.
+3. The main screen shows legacy View-based dialogs with a correctly positioned toolbar.
+4. Click **"Open Jetpack Compose Samples"** to explore the new Jetpack Compose dialogs and bottom sheets.
+5. Toggle **Dark Mode** in the top bar to see the dialogs adapt instantly.

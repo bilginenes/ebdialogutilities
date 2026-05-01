@@ -31,11 +31,56 @@ dependencyResolutionManagement {
 Add the dependency to your module `build.gradle`:
 ```kotlin
 dependencies {
-    implementation("com.github.bilginenes:ebdialogutilities:1.0.0")
+    implementation("com.github.bilginenes:ebdialogutilities:2.0.0")
 }
 ```
 
-## Usage
+## Jetpack Compose Usage (Recommended)
+
+### 1. Basic Dialog
+```kotlin
+val state = rememberEBDialogState()
+
+EBInfoDialog(
+    state = state,
+    title = "Hello",
+    message = "Welcome to EBDialog Compose!"
+)
+
+Button(onClick = { state.show() }) {
+    Text("Show Dialog")
+}
+```
+
+### 2. DSL Builder
+```kotlin
+val state = rememberEBDialogState()
+
+EBDialog(state = state) {
+    Title(text = "Custom DSL", icon = Icons.Default.Settings)
+    Message(text = "You can build any content here.")
+    Input(hint = "Enter something") { value -> /* handle */ }
+    Buttons(
+        positiveText = "Save",
+        onPositiveClick = { /* save */ },
+        negativeText = "Cancel"
+    )
+}
+```
+
+### 3. Bottom Sheets
+```kotlin
+val sheetState = rememberEBDialogState()
+
+EBBottomSheet(state = sheetState) {
+    Title(text = "Quick Actions")
+    ListContent(items = listOf("Share", "Edit", "Delete")) { index, item ->
+        // handle
+    }
+}
+```
+
+## View-based Usage (Legacy)
 
 ### 1. Initialization
 Initialize the library with your preferred theme (usually in `Application.onCreate` or `Activity.onCreate`):

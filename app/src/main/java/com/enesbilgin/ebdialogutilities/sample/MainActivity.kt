@@ -6,10 +6,12 @@
 
 package com.enesbilgin.ebdialogutilities.sample
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.enesbilgin.ebdialogutilities.Constants.DialogTheme
+import com.enesbilgin.ebdialogutilities.Models.EBCustomDialogModel
 import com.enesbilgin.ebdialogutilities.Utilities.EBDialogUtilities
 import com.enesbilgin.ebdialogutilities.Utilities.buttons
 import com.enesbilgin.ebdialogutilities.Utilities.positive
@@ -23,6 +25,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        
+        setSupportActionBar(binding.toolbar)
+        supportActionBar?.title = "EBDialog Utilities"
 
         EBDialogUtilities.initialize(this, DialogTheme.LIGHT_1)
 
@@ -31,9 +36,13 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.button2.setOnClickListener {
-            EBDialogUtilities.showInputBox(this, "Enter Your Name", "Name here") { name ->
-                Toast.makeText(this, "Hello $name!", Toast.LENGTH_SHORT).show()
-            }
+            // Show custom layout in legacy View-based dialog
+            val dialogModel = EBCustomDialogModel(
+                headerText = "Custom Layout (Legacy)",
+                messageText = "This dialog hosts a custom XML layout.",
+                customViewLayoutRes = com.enesbilgin.ebdialogutilities.R.layout.eb_dialog_list_item // reusing an existing layout for demo
+            )
+            EBDialogUtilities.showCustomDialog(this, dialogModel)
         }
 
         binding.button3.setOnClickListener {
@@ -62,6 +71,10 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
             }.show(supportFragmentManager, "dsl_dialog")
+        }
+
+        binding.buttonCompose.setOnClickListener {
+            startActivity(Intent(this, ComposeActivity::class.java))
         }
     }
 }
