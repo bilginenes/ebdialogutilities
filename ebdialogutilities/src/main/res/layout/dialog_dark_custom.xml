@@ -30,6 +30,13 @@
             android:layout_height="wrap_content"
             android:text="@string/eb_lorem_ipsum_long" />
 
+        <FrameLayout
+            android:id="@+id/dynamicContentContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:visibility="gone" />
+
         <LinearLayout
             android:id="@+id/buttonsLayout"
             android:layout_marginTop="8dp"

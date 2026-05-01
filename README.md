@@ -2,86 +2,96 @@
 
 [![](https://jitpack.io/v/bilginenes/ebdialogutilities.svg)](https://jitpack.io/#bilginenes/ebdialogutilities)
 
-EB Dialog is a Pop-up Dailog library that offers solutions for general Info, Error, Confirm cases.
+EB Dialog is a modern, lightweight Android library for easy dialog management. It offers solutions for Information, Error, Confirmation, Input, and List dialogs with a fluent Kotlin API.
 
-### Active use in Memories: Dark Gallery
+## Features
 
-https://play.google.com/store/apps/details?id=com.enesbilgin.memories
+- ✅ **Modern Kotlin API**: Clean and idiomatic DSL/Builder support.
+- ✅ **ViewBinding**: Safe and efficient UI management.
+- ✅ **Customization**: Support for Light/Dark themes and custom layouts.
+- ✅ **Variety of Dialogs**:
+  - Information & Error Boxes
+  - Confirmation Dialogs
+  - Input Dialogs (with text feedback)
+  - List Dialogs (for quick selection)
+  - Enhanced Loading Dialogs (with message support)
+  - Google Play Vote Dialogs
 
-## Import Gradle
+## Installation
 
-Add it in your root build.gradle at the end of repositories:
-```dart
-allprojects {
+Add JitPack to your `settings.gradle` or root `build.gradle`:
+```kotlin
+dependencyResolutionManagement {
     repositories {
-        ...
-        maven { url 'https://jitpack.io' }
+        maven { url = uri("https://jitpack.io") }
     }
 }
 ```
- Add the dependency:
-```dart
+
+Add the dependency to your module `build.gradle`:
+```kotlin
 dependencies {
-    implementation 'com.github.bilginenes:ebdialogutilities:0.1.1'
+    implementation("com.github.bilginenes:ebdialogutilities:1.0.0")
 }
 ```
-## How To Use
-### Information Dialog
-```dart
-EBDialogUtilities.showInfoBox(MainActivity.this,"This is an information message.");
+
+## Usage
+
+### 1. Initialization
+Initialize the library with your preferred theme (usually in `Application.onCreate` or `Activity.onCreate`):
+```kotlin
+EBDialogUtilities.initialize(context, DialogTheme.LIGHT_1)
 ```
- <img src="https://raw.githubusercontent.com/bilginenes/ebdialogutilities/master/readme/info.png" width="320px">
 
-### Error Dialog
- ```dart
-EBDialogUtilities.showErrorBox(MainActivity.this,"This is a error message.");
+### 2. Information & Error Dialogs
+```kotlin
+// Simple Info
+EBDialogUtilities.showInfoBox(activity, "Information", "This is an informative message.")
+
+// Simple Error
+EBDialogUtilities.showErrorBox(activity, "Oops!", "Something went wrong.")
 ```
-<img src="https://raw.githubusercontent.com/bilginenes/ebdialogutilities/master/readme/err.png" width="320px">
 
-### Confirmation Dialog
- ```dart
-EBDialogUtilities.showConfirmBox(MainActivity.this, "Confirm Process", "Do you want to proceed the operation?",
-    new CompletionListener() {
-	    @Override
-	    public void onSuccess() {
-		Toast.makeText(MainActivity.this,"onSuccess", Toast.LENGTH_SHORT).show();
-	    }
-
-	    @Override
-	    public void onCancel() {
-		Toast.makeText(MainActivity.this,"onCancel", Toast.LENGTH_SHORT).show();
-	    }
-	});
+### 3. Input Dialog
+Easily collect user input:
+```kotlin
+EBDialogUtilities.showInputBox(activity, "Your Name", hint = "Enter name here") { name ->
+    println("User entered: $name")
+}
 ```
-<img src="https://raw.githubusercontent.com/bilginenes/ebdialogutilities/master/readme/confirm.png" width="320px">
 
-### Google Play Vote Dialog
- ```dart
-EBDialogUtilities.showVoteBox(MainActivity.this, getString(R.string.app_name), new VoteChoiceListener() {
-    @Override
-    public void onRedirect() {
-    	//Redirect your user to google play here.
-	redirectToGooglePlay();
-	Toast.makeText(MainActivity.this,"onRedirect", Toast.LENGTH_SHORT).show();
+### 4. List Dialog
+Quick selection from a list of options:
+```kotlin
+val options = listOf("Option A", "Option B", "Option C")
+EBDialogUtilities.showListBox(activity, "Select One", options) { index, item ->
+    println("Selected $item at position $index")
+}
+```
+
+### 5. Loading Dialog (with Message)
+```kotlin
+val loader = EBDialogUtilities.showLoadingBox(activity, message = "Processing your request...")
+// Dismiss when done
+loader.dismiss()
+```
+
+### 6. DSL Builder (Advanced)
+Use the powerful DSL for complex dialog configurations:
+```kotlin
+EBDialogUtilities.build(activity) {
+    headerText = "Custom DSL"
+    messageText = "Fully configured via Kotlin DSL"
+    buttons {
+        positive("Accept", color = R.color.md_green_700) {
+            // positive action
+        }
+        negative("Decline") {
+            // negative action
+        }
     }
-
-    @Override
-    public void onCancel() {
-	Toast.makeText(MainActivity.this,"onCancel", Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void onLater() {
-	Toast.makeText(MainActivity.this,"onLater", Toast.LENGTH_SHORT).show();
-    }
-});
+}.show(supportFragmentManager, "custom_dialog")
 ```
-<img src="https://raw.githubusercontent.com/bilginenes/ebdialogutilities/master/readme/vote.png" width="320px">
-
-## Bugs/Requests
-
-If you encounter any problems feel free to open an issue. If you feel the library is
-missing a feature, please raise a ticket on Github and I'll look into it.
 
 ## License
 
